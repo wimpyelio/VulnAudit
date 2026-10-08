@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["id", "title", "owasp_category", "severity", "description", "evidence", "remediation"],
+  "properties": {
+    "id": {"type": "string"},
+    "title": {"type": "string"},
+    "owasp_category": {"type": "string"},
+    "severity": {"enum": ["Critical", "High", "Medium", "Low", "Informational"]},
+    "description": {"type": "string"},
+    "evidence": {
+      "type": "object",
+      "required": ["request", "response_snippet"],
+      "properties": {"request": {"type": "string"}, "response_snippet": {"type": "string", "maxLength": 2048}},
+      "additionalProperties": false
+    },
+    "remediation": {"type": "string"}
+  },
+  "additionalProperties": false
+}
